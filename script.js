@@ -70,3 +70,17 @@ window.addEventListener("scroll", () => {
   backToTop.classList.toggle("visible", window.scrollY > 500);
 });
 backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+
+
+const section = document.querySelector(".looking-forward");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            section.classList.add("show");
+        }
+    });
+}, { threshold: 0.3 });
+
+observer.observe(section);

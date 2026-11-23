@@ -546,7 +546,87 @@ select {
     letter-spacing: 3px;
     color: #9a805c
 }
+.looking-forward {
+    text-align: center;
+    padding: 80px 20px;
+    background: #f8f0e4;
+    color: #806747;
+}
 
+.flower {
+    font-size: 45px;
+    color: #bd7568;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #a98954;
+}
+
+.looking-forward h2 {
+    font-family: "Great Vibes", cursive;
+    font-size: 55px;
+    font-weight: normal;
+    color: #b45e58;
+    margin: 15px 0;
+}
+
+.message {
+    max-width: 550px;
+    margin: 20px auto;
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+.looking-forward h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+.names {
+    font-family: "Great Vibes", cursive;
+    font-size: 42px;
+    color: #b45e58;
+}
+.heart {
+    display: inline-block;
+    color: #bd7568;
+    font-size: clamp(18px, 3vw, 28px);
+    margin-top: 20px;
+    animation: heartbeat 1.2s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.3);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.2);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .heart {
+        animation: none;
+    }
+}
 footer {
     text-align: center;
     padding: 25px;
