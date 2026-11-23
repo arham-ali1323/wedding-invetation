@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f4eadb" />
+  <title>Wedding Invitation | A Celebration of Love</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="petal-layer" aria-hidden="true"></div>
+  <main>
+    <section class="envelope-screen" id="envelopeScreen">
+      <div class="envelope-wrap" id="envelope" role="button" tabindex="0" aria-label="Open wedding invitation">
+        <div class="envelope-back"></div>
+        <div class="letter-peek">
+          <div class="mini-ornament">❧</div>
+          <p class="mini-kicker">YOU ARE INVITED</p>
+          <p class="mini-names">A &amp; S</p>
+        </div>
+        <div class="envelope-pocket"></div>
+        <div class="envelope-flap"></div>
+        <div class="wax-seal"><span> A <i>&amp;</i> S </span></div>
+      </div>
+      <p class="open-hint">A BEAUTIFUL CELEBRATION AWAITS</p>
+      <button class="open-button" id="openButton">Open Invitation <span>✦</span></button>
+    </section>
+
+    <section class="invitation hidden" id="invitation">
+      <div class="invitation-card">
+        <div class="floral floral-top-left">❀<span>✿</span>❁</div>
+        <div class="floral floral-top-right">❁<span>✿</span>❀</div>
+        <div class="floral floral-bottom-left">❁<span>✿</span>❀</div>
+        <div class="floral floral-bottom-right">❀<span>✿</span>❁</div>
+        <div class="arch">
+          <div class="arch-top">✥</div>
+          <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+          <p class="eyebrow">WITH THE BLESSINGS OF ALLAH</p>
+          <p class="intro">Together with our families,</p>
+          <h1 class="script-title">We joyfully invite you</h1>
+          <p class="intro">to celebrate the wedding of</p>
+          <div class="couple-names"><span>Arham</span><em>&amp;</em><span>Sara</span></div>
+          <div class="ornament-divider"><span>✧</span></div>
+          <p class="invitation-copy">Two hearts, one beautiful journey.<br>Join us as we begin our forever.</p>
+          <div class="countdown" aria-label="Countdown to the wedding">
+            <div><strong id="days">00</strong><small>DAYS</small></div>
+            <div><strong id="hours">00</strong><small>HOURS</small></div>
+            <div><strong id="minutes">00</strong><small>MINUTES</small></div>
+            <div><strong id="seconds">00</strong><small>SECONDS</small></div>
+          </div>
+          <p class="date-line">SATURDAY <b>·</b> 12 DECEMBER 2026</p>
+          <p class="closing-line">Your presence will make our day complete</p>
+        </div>
+      </div>
+
+      <section class="event-section">
+        <div class="section-flower">❀</div>
+        <p class="eyebrow">THE CELEBRATIONS</p>
+        <h2>Wedding Events</h2>
+        <div class="event-grid">
+          <article class="event-card">
+            <div class="event-icon">✿</div>
+            <p class="event-label">EVENT ONE</p>
+            <h3>Mehndi</h3>
+            <p class="event-date">Thursday · 10 December 2026</p>
+            <div class="event-rule"></div>
+            <p class="event-time">7:00 PM onwards</p>
+            <p class="venue">Rose Garden Marquee<br><span>Sahiwal, Pakistan</span></p>
+          </article>
+          <article class="event-card featured">
+            <div class="event-icon">❦</div>
+            <p class="event-label">THE BIG DAY</p>
+            <h3>Nikah &amp; Wedding</h3>
+            <p class="event-date">Saturday · 12 December 2026</p>
+            <div class="event-rule"></div>
+            <p class="event-time">7:00 PM · Barat arrival</p>
+            <p class="venue">Royal Palace Marquee<br><span>Sahiwal, Pakistan</span></p>
+          </article>
+          <article class="event-card">
+            <div class="event-icon">✽</div>
+            <p class="event-label">EVENT THREE</p>
+            <h3>Walima</h3>
+            <p class="event-date">Sunday · 13 December 2026</p>
+            <div class="event-rule"></div>
+            <p class="event-time">1:00 PM onwards</p>
+            <p class="venue">Lotus Palace<br><span>Sahiwal, Pakistan</span></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="rsvp-section">
+        <div class="rsvp-card">
+          <p class="arabic small-arabic">أَهْلًا وَسَهْلًا</p>
+          <h2>We can't wait to see you</h2>
+          <p>Please let us know if you can join our celebration.</p>
+          <form id="rsvpForm">
+            <input type="text" id="guestName" placeholder="Your name" required />
+            <select id="attendance" required>
+              <option value="" disabled selected>Will you attend?</option>
+              <option value="Joyfully accepts">Joyfully accepts</option>
+              <option value="Regretfully declines">Regretfully declines</option>
+            </select>
+            <button type="submit">Send RSVP <span>♡</span></button>
+          </form>
+          <p class="rsvp-message" id="rsvpMessage" aria-live="polite"></p>
+          <div class="monogram">A <i>&amp;</i> S</div>
+          <p class="forever">WITH LOVE, THE FAMILIES</p>
+        </div>
+      </section>
+      <footer>MADE WITH LOVE <span>♥</span> FOR OUR SPECIAL DAY</footer>
+    </section>
+  </main>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  <script src="./script.js"></script>
+</body>
+</html>
