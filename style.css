@@ -559,6 +559,11 @@ footer {
 footer span {
     color: #b75e58
 }
+footer span a{
+    color: #b75e58;
+      font-weight:900;
+      text-transform: uppercase;
+}
 
 .back-to-top {
     position: fixed;
