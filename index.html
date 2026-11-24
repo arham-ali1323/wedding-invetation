@@ -11,13 +11,13 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
   <div class="petal-layer" aria-hidden="true"></div>
   <main>
-    <section class="envelope-screen" id="envelopeScreen">
+    <section class="envelope-screen hidden" id="envelopeScreen">
       <div class="envelope-wrap" id="envelope" role="button" tabindex="0" aria-label="Open wedding invitation">
         <div class="envelope-back"></div>
         <div class="letter-peek">
@@ -31,6 +31,15 @@
       </div>
       <p class="open-hint">A BEAUTIFUL CELEBRATION AWAITS</p>
       <button class="open-button" id="openButton">Open Invitation <span>✦</span></button>
+    </section>
+
+    <section class="invalid-invitation hidden" id="invalidInvitation" aria-live="polite">
+      <div class="invalid-card">
+        <div class="invalid-ornament">❀</div>
+        <p class="eyebrow">A PRIVATE CELEBRATION</p>
+        <h1 id="invalidTitle">Invitation unavailable</h1>
+        <p id="invalidMessage">This invitation link is incomplete or no longer available. Please contact the hosts for a new link.</p>
+      </div>
     </section>
 
     <section class="invitation hidden" id="invitation">
@@ -51,6 +60,8 @@
           <p class="intro">
             Mr. &amp; Mrs. Sh M Shafiq
           </p>
+
+          <p class="guest-greeting" id="guestGreeting"></p>
 
           <h1 class="script-title">
             cordially invite you
@@ -77,14 +88,6 @@
             <br>
             as we celebrate this beautiful occasion.
           </p>
-          <div class="countdown" aria-label="Countdown to the wedding">
-            <div><strong id="days">00</strong><small>DAYS</small></div>
-            <div><strong id="hours">00</strong><small>HOURS</small></div>
-            <div><strong id="minutes">00</strong><small>MINUTES</small></div>
-            <div><strong id="seconds">00</strong><small>SECONDS</small></div>
-          </div>
-          <!-- Date -->
-          <p class="date-line">SATURDAY <b>·</b> 12 DECEMBER 2026</p>
           <p class="closing-line">Your presence will make our day complete</p>
         </div>
       </div>
@@ -92,67 +95,9 @@
       <section class="event-section">
         <div class="section-flower">❀</div>
         <p class="eyebrow">THE CELEBRATIONS</p>
-        <h2>Wedding Events</h2>
-        <div class="event-grid">
-        <div class="event-card-wrapper">
-  <article class="event-card mehndi-theme">
-    <div class="event-icon">✿</div>
-    <p class="event-label">Event One</p>
-    <h3>Mehndi</h3>
-    <p class="event-date">Thursday &middot; 10 December 2026</p>
-    <div class="event-rule"><span>✦</span></div>
-    <p class="event-time">7:00 PM onwards</p>
-    <p class="venue">Rose Garden Marquee<span>Sahiwal, Pakistan</span></p>
-  </article>
-</div>
-       <article class="event-card featured">
-  <!-- Decorative inner border & corner accents -->
-  <div class="card-inner-frame">
-    <span class="corner-ornament top-left">❧</span>
-    <span class="corner-ornament top-right">❧</span>
-
-    <div class="event-badge">
-      <span class="badge-line"></span>
-      <p class="event-label">THE BIG DAY</p>
-      <span class="badge-line"></span>
-    </div>
-
-    <div class="event-icon">❦</div>
-
-    <h3 class="event-title">Nikah &amp; Wedding</h3>
-    <p class="event-date">Saturday · 12 December 2026</p>
-
-    <div class="event-rule">
-      <span>✦</span>
-    </div>
-
-    <div class="event-schedule">
-      <p class="event-time">7:00 PM <span>· Barat Arrival</span></p>
-    </div>
-
-    <div class="event-venue">
-      <p class="venue-name">Royal Palace Marquee</p>
-      <p class="venue-city">Sahiwal, Pakistan</p>
-    </div>
-
-    <span class="corner-ornament bottom-left">❧</span>
-    <span class="corner-ornament bottom-right">❧</span>
-  </div>
-</article>
-
-         <div class="event-card-wrapper">
-  <article class="event-card">
-    <div class="event-icon">✽</div>
-    <p class="event-label">Event Three</p>
-    <h3>Walima</h3>
-    <p class="event-date">Sunday &middot; 13 December 2026</p>
-    <div class="event-rule"><span>✦</span></div>
-    <p class="event-time">1:00 PM onwards</p>
-    <p class="venue">Lotus Palace<span>Sahiwal, Pakistan</span></p>
-  </article>
-</div>
-
-        </div>
+        <h2 id="eventsHeading">Wedding Events</h2>
+        <p class="events-for hidden" id="eventsFor"></p>
+        <div class="event-grid" id="eventGrid"></div>
       </section>
 
       <!-- Looking forward -->
@@ -206,7 +151,7 @@
     </section>
   </main>
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
-  <script src="./script.js"></script>
+  <script src="/script.js"></script>
 </body>
 
 </html>

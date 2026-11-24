@@ -1343,3 +1343,444 @@ body {
             font-size: 73px
         }
     }
+
+/* ============================================================
+   Continuous falling pastel petals — Pakistani luxury wedding
+   Elegant, romantic, performant, reduced-motion safe.
+   ============================================================ */
+.petal-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden
+}
+
+.petal {
+    position: absolute;
+    pointer-events: none;
+    will-change: transform, opacity;
+    opacity: 0;
+    animation: petal-fall linear forwards
+}
+
+@keyframes petal-fall {
+    0% {
+        transform: translate3d(0, -12vh, 0) rotate(var(--petal-start-rot));
+        opacity: 0
+    }
+
+    10% {
+        opacity: var(--petal-opacity)
+    }
+
+    30% {
+        transform: translate3d(-10px, 34vh, 0) rotate(calc(var(--petal-start-rot) + 140deg))
+    }
+
+    50% {
+        transform: translate3d(14px, 56vh, 0) rotate(calc(var(--petal-start-rot) + 280deg))
+    }
+
+    70% {
+        transform: translate3d(-8px, 80vh, 0) rotate(calc(var(--petal-start-rot) + 420deg))
+    }
+
+    100% {
+        transform: translate3d(var(--petal-drift), 114vh, 0) rotate(var(--petal-end-rot));
+        opacity: 0
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .petal-layer {
+        display: none !important
+    }
+}
+
+.guest-greeting {
+    margin: 20px 0 2px;
+    color: #806442;
+    font: 16px "Playfair Display", serif;
+}
+
+.events-for {
+    margin: -38px 0 42px;
+    color: #806442;
+    font-family: "Playfair Display", serif;
+    font-size: 17px;
+    font-style: italic;
+}
+
+.event-card {
+    min-height: 410px;
+    overflow: hidden;
+    animation: event-card-entrance .8s cubic-bezier(.2, .75, .25, 1) both;
+    animation-delay: var(--card-delay, 0ms);
+}
+
+.event-card--mehndi {
+    background:
+        radial-gradient(ellipse at 50% 0, #fff5d5 0, transparent 40%),
+        linear-gradient(145deg, #f8fbef, #dcebd8);
+    border: 1px solid #c99a35;
+    border-radius: 48% 48% 16px 16px / 18% 18% 16px 16px;
+    color: #24432e;
+    box-shadow: 0 16px 38px #31513a20, inset 0 0 24px #fff8df88;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.event-card--mehndi::before {
+    inset: 12px;
+    border: 1px solid #729268;
+    border-radius: 46% 46% 11px 11px / 17% 17% 11px 11px;
+}
+
+.event-card--mehndi::after {
+    content: "✿";
+    position: absolute;
+    right: 25px;
+    bottom: 17px;
+    color: #d78a28;
+    font-size: 25px;
+    opacity: .8;
+}
+
+.mehndi-garland {
+    color: #c47a1e;
+    font-size: 22px;
+    letter-spacing: 6px;
+    margin-bottom: 19px;
+}
+
+.mehndi-icon {
+    color: #d28320;
+    font-size: 36px;
+    animation: mehndi-sway 4s ease-in-out infinite;
+}
+
+.event-card--mehndi .event-label { color: #47764e; }
+.event-card--mehndi .event-title {
+    color: #173a27;
+    font-size: 50px;
+    font-weight: 600;
+}
+.event-card--mehndi .event-date { color: #42644a; }
+.event-card--mehndi .event-rule::before,
+.event-card--mehndi .event-rule::after {
+    background: linear-gradient(90deg, transparent, #65865d, transparent);
+}
+.event-card--mehndi .event-rule { color: #cf8322; }
+.event-card--mehndi .event-time { color: #ab681b; }
+.event-card--mehndi .venue { color: #27452e; }
+.event-card--mehndi .venue span { color: #60755a; }
+
+.mehndi-diyas {
+    margin-top: 21px;
+    color: #d18825;
+    font-size: 15px;
+    letter-spacing: 5px;
+}
+
+.event-card--barat {
+    padding: 13px;
+    border: 1px solid #d5b55d;
+    border-radius: 8px;
+    color: #fff4d9;
+    background:
+        radial-gradient(ellipse at 50% 0, #7a2c39, transparent 48%),
+        linear-gradient(145deg, #501a27, #260e18);
+    box-shadow: 0 22px 48px #38101f47, inset 0 0 28px #d3ae4c12;
+}
+
+.barat-frame {
+    position: relative;
+    min-height: 382px;
+    width: 100%;
+    padding: 53px 20px 43px;
+    border: 1px solid #b99647;
+    border-radius: 48% 48% 6px 6px / 25% 25% 6px 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: repeating-linear-gradient(45deg, transparent, transparent 13px, #fff3d008 14px, #fff3d008 15px);
+}
+
+.barat-corner {
+    position: absolute;
+    color: #e0c779;
+    font-size: 22px;
+}
+.barat-corner--left { top: 11px; left: 15px; }
+.barat-corner--right { top: 11px; right: 15px; transform: scaleX(-1); }
+.barat-corner--bottom-left { bottom: 10px; left: 15px; transform: scaleY(-1); }
+.barat-corner--bottom-right { bottom: 10px; right: 15px; transform: scale(-1); }
+.event-card--barat .event-badge { gap: 8px; margin: 0 0 15px; }
+.event-card--barat .event-label {
+    color: #ead38d;
+    font-family: "Playfair Display", serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin: 0;
+}
+.event-card--barat .badge-line { background: #d7bc6c; width: 18px; }
+.barat-icon { color: #e8d18a; font-size: 34px; }
+.event-card--barat .event-title {
+    color: #fff8e9;
+    font-family: "Playfair Display", serif;
+    font-size: 44px;
+    letter-spacing: 2px;
+}
+.event-card--barat .event-date { color: #e9dcc3; }
+.event-card--barat .event-rule::before,
+.event-card--barat .event-rule::after {
+    background: linear-gradient(90deg, transparent, #d6bd73, transparent);
+}
+.event-card--barat .event-rule { color: #f0d991; }
+.event-card--barat .event-time { color: #f0d991; font-size: 19px; }
+.event-card--barat .venue-name {
+    color: #fff8e9;
+    font-family: "Playfair Display", serif;
+    font-size: 14px;
+}
+.event-card--barat .venue-city { color: #d8c8a9; }
+
+.event-card--walima {
+    border: 1px solid #9aabc1;
+    border-radius: 8px 8px 44% 44% / 8px 8px 10% 10%;
+    background:
+        radial-gradient(circle at 50% 94%, #d2dbe5 0, transparent 42%),
+        linear-gradient(150deg, #f7f8f5, #e1e9ed);
+    color: #344557;
+    box-shadow: 0 17px 38px #354b6120, inset 0 0 0 7px #fff9;
+}
+
+.event-card--walima::before {
+    inset: 11px;
+    border: 1px solid #9aabc1;
+    border-radius: 5px 5px 42% 42% / 5px 5px 10% 10%;
+}
+
+.walima-moon {
+    position: absolute;
+    top: 16px;
+    right: 27px;
+    color: #899bb1;
+    font-size: 34px;
+    transform: rotate(-20deg);
+}
+
+.walima-icon {
+    color: #8497ae;
+    font-size: 35px;
+    animation: walima-bloom 5s ease-in-out infinite;
+}
+.event-card--walima .event-label {
+    color: #687f98;
+    font-family: "Playfair Display", serif;
+    letter-spacing: 2px;
+}
+.event-card--walima .event-title {
+    color: #35495e;
+    font-family: "Great Vibes", cursive;
+    font-size: 56px;
+    font-weight: 400;
+}
+.event-card--walima .event-date { color: #64788e; }
+.event-card--walima .event-rule::before,
+.event-card--walima .event-rule::after {
+    background: linear-gradient(90deg, transparent, #899db2, transparent);
+}
+.event-card--walima .event-rule { color: #7e94ac; }
+.event-card--walima .event-time { color: #526e89; }
+.event-card--walima .venue { color: #374e65; }
+.event-card--walima .venue span { color: #75889a; }
+.walima-flourish {
+    margin-top: 16px;
+    color: #8299ae;
+    font-size: 20px;
+}
+
+@keyframes event-card-entrance {
+    from { opacity: 0; translate: 0 24px; }
+    to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes mehndi-sway {
+    0%, 100% { transform: rotate(-7deg); }
+    50% { transform: rotate(7deg); }
+}
+
+@keyframes walima-bloom {
+    0%, 100% { transform: scale(.94) rotate(-8deg); }
+    50% { transform: scale(1.08) rotate(8deg); }
+}
+
+.invalid-invitation {
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: radial-gradient(ellipse at center, #fff9ef, #e7d8c4);
+    text-align: center;
+}
+
+.invalid-card {
+    width: min(100%, 520px);
+    padding: 54px 36px;
+    border: 1px solid #c9ad7c;
+    outline: 1px solid #c9ad7c;
+    outline-offset: -9px;
+    background: #fbf5e9;
+    box-shadow: 0 18px 48px #65513a22;
+}
+
+.invalid-ornament { color: #bd7568; font-size: 38px; }
+.invalid-card h1 {
+    margin: 14px 0;
+    color: #a95751;
+    font: 600 34px "Cormorant Garamond", serif;
+}
+.invalid-card > p:last-child {
+    margin: 0 auto;
+    max-width: 390px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.admin-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 50% 0, #fff9ef, transparent 55%),
+        #eee3d3;
+    color: #544432;
+}
+
+.admin-main { width: min(100% - 32px, 900px); margin: 0 auto; padding: 30px 0 70px; }
+.admin-header { text-align: center; padding: 24px 12px 30px; }
+.admin-back { color: #806744; font-size: 15px; text-decoration: none; }
+.admin-back:hover { color: #a95751; }
+.admin-header .eyebrow { margin-top: 30px; }
+.admin-header h1 {
+    margin: 4px 0;
+    color: #a95751;
+    font: 600 clamp(38px, 8vw, 56px) "Cormorant Garamond", serif;
+}
+.admin-header > p:last-child { margin: 8px auto 0; max-width: 560px; font-size: 18px; }
+.admin-panel {
+    margin: 0 0 24px;
+    padding: clamp(22px, 5vw, 36px);
+    border: 1px solid #d4c09c;
+    background: #fffaf1eF;
+    box-shadow: 0 14px 38px #65513a14;
+}
+.admin-panel h2 { margin: 0; color: #725638; font: 600 29px "Cormorant Garamond", serif; }
+.admin-panel > p { margin: 8px 0 20px; font-size: 16px; }
+.admin-panel form > label,
+.guest-edit-form > label {
+    display: block;
+    margin: 16px 0 6px;
+    color: #66513e;
+    font-size: 15px;
+}
+.admin-panel input:not([type="checkbox"]) {
+    width: 100%;
+    min-height: 44px;
+    padding: 9px 11px;
+    border: 1px solid #cdbb9e;
+    border-radius: 2px;
+    background: #fffefa;
+    color: #463827;
+}
+.admin-panel button {
+    min-height: 43px;
+    padding: 9px 18px;
+    border: 1px solid #987746;
+    background: #806744;
+    color: #fffaf1;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+.admin-panel button:hover { background: #a95751; transform: translateY(-1px); }
+.admin-panel button:disabled { cursor: wait; opacity: .6; transform: none; }
+.admin-panel .quiet-button {
+    min-height: 36px;
+    padding: 6px 12px;
+    border-color: #c6b28f;
+    background: transparent;
+    color: #765d3b;
+}
+.admin-panel .quiet-button:hover { background: #f1e7d7; color: #765d3b; }
+.admin-panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+.admin-panel-heading .eyebrow { margin-bottom: 5px; }
+.admin-events { margin: 21px 0 8px; padding: 0; border: 0; }
+.admin-events legend { margin-bottom: 9px; color: #66513e; font-size: 15px; }
+.admin-events legend span { margin-left: 6px; color: #95836b; font-size: 13px; }
+.event-options { display: flex; flex-wrap: wrap; gap: 9px; }
+.event-choice {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 13px;
+    border: 1px solid #d7c6a9;
+    background: #fcf7ed;
+    cursor: pointer;
+}
+.event-choice input { accent-color: #816645; }
+.created-link {
+    display: grid;
+    gap: 7px;
+    overflow-wrap: anywhere;
+    margin-top: 20px;
+    padding: 16px;
+    border-left: 3px solid #778f70;
+    background: #eef4e9;
+    color: #40563e;
+}
+.created-link p { margin: 0; }
+.created-link a { color: #375c47; }
+.created-link small { line-height: 1.45; }
+.admin-notice {
+    min-height: 0;
+    margin: 0 0 14px;
+    color: #456547;
+    font-size: 16px;
+}
+.admin-notice:empty { display: none; }
+.admin-notice.error { color: #9c3e3a; }
+.guest-list { display: grid; gap: 14px; margin-top: 22px; }
+.guest-row { padding: 18px; border: 1px solid #e0d1b8; background: #fffdf8; }
+.guest-row-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.guest-row h3 { margin: 0; color: #76583a; font: 600 23px "Cormorant Garamond", serif; }
+.guest-link-status { color: #8c7c65; font-size: 13px; }
+.guest-edit-form .admin-events { margin-top: 14px; }
+.guest-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
+.admin-panel .revoke-button { border-color: #b76d62; background: transparent; color: #9c4945; }
+.admin-panel .revoke-button:hover { background: #f8e9e5; color: #813b37; }
+.empty-guests { margin: 0; color: #7a6a58; font-size: 16px; }
+
+@media (max-width: 700px) {
+    .event-card { min-height: 385px; }
+    .event-card--barat { min-height: 410px; }
+    .barat-frame { min-height: 382px; padding-right: 14px; padding-left: 14px; }
+    .events-for { margin-bottom: 32px; }
+    .invalid-card { padding: 45px 24px; }
+    .admin-main { width: min(100% - 22px, 900px); padding-top: 15px; }
+    .admin-panel-heading { align-items: flex-start; }
+    .guest-row-heading { align-items: flex-start; flex-direction: column; gap: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .event-card,
+    .mehndi-icon,
+    .walima-icon {
+        animation: none !important;
+    }
+}
+
+.invalid-invitation.hidden,
+.created-link.hidden,
+.events-for.hidden {
+    display: none;
+}
