@@ -23,11 +23,37 @@ with that guest. Existing guests can have their event access or expiry changed,
 or their link revoked. A revoked or expired link no longer returns any event
 details.
 
-## Deployment
+## Deploy to Vercel
 
-Run the Python server behind an HTTPS reverse proxy, set
-`WEDDING_COOKIE_SECURE=1`, configure a strong `WEDDING_ADMIN_PASSWORD`, and
-keep the SQLite database on persistent storage. The server binds to
-`127.0.0.1` by default; set `WEDDING_HOST` and `WEDDING_PORT` to match the
-deployment. Invitation URLs are bearer links: share them privately and do not
+The static pages and API can be deployed from this repository to Vercel. The
+deployed API uses Neon Postgres because Vercel's function filesystem is not
+persistent; the local SQLite database is not used or copied to production.
+
+1. Import this repository into Vercel.
+2. Add the Neon Postgres integration to the Vercel project and make sure it
+   provides `DATABASE_URL` to the Production deployment.
+3. Add `WEDDING_ADMIN_PASSWORD` in Vercel's Environment Variables. Use a unique
+   password with at least 16 characters, and enable it for Production.
+4. Deploy. The `vercel.json` rewrites expose the admin page at `/admin`,
+   invitation pages at `/invite/<token>`, and route API requests through a
+   serverless function.
+5. Open `https://<your-domain>/admin`, sign in, and create guest invitations.
+
+The API creates its Postgres tables on first use. Guest links contain random
+bearer tokens; only their hashes are stored. Share each generated link privately.
+If you already created guests in the local SQLite database, add them again in
+the production admin page; local data is intentionally not uploaded.
+
+## Local database
+
+For local development, the Python server still uses `data/guests.sqlite3`:
+
+```powershell
+$env:WEDDING_ADMIN_PASSWORD = "choose-a-long-private-password"
+python server.py
+```
+
+Open [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin) to manage local
+invitations. This local database is separate from the Neon database used on
+Vercel. Invitation URLs are bearer links; share them privately and do not
 publish them.
