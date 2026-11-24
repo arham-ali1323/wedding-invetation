@@ -128,7 +128,7 @@ select {
 
 .wax-seal span {
     font-family: "Great Vibes";
-    font-size: 18px
+    font-size: 24px
 }
 
 .wax-seal i {
@@ -725,6 +725,130 @@ select {
       transform: translateY(-8px);
     }
   }
+footer {
+    text-align: center;
+    padding: 25px;
+    font: 9px "Playfair Display";
+    letter-spacing: 2px;
+    background: #e5d5bf;
+    color: #8b7658
+}
+
+footer span {
+    color: #b75e58
+}
+
+.back-to-top {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #b99b6b;
+    background: #f8f0e4;
+    color: #8c704b;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto
+}
+
+.petal-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden
+}
+
+.petal {
+    position: absolute;
+    top: -30px;
+    width: 10px;
+    height: 14px;
+    border-radius: 80% 10% 80% 10%;
+    background: #d98e83;
+    opacity: .65;
+    animation: fall linear forwards
+}
+
+@keyframes fall {
+    to {
+        transform: translate3d(var(--drift), 110vh, 0) rotate(600deg);
+        opacity: .05
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@media(max-width:700px) {
+    .invitation-card {
+        min-height: 740px;
+        padding: 30px 17px;
+        margin: 14px auto 35px
+    }
+
+    .arch {
+        min-height: 670px;
+        padding: 38px 8px 25px
+    }
+
+    .event-grid {
+        grid-template-columns: 1fr;
+        max-width: 430px
+    }
+
+    .event-card.featured {
+        transform: none;
+        order: -1
+    }
+
+    .event-card {
+        min-height: 0;
+        padding: 22px
+    }
+
+    .floral {
+        font-size: 35px
+    }
+
+    .countdown {
+        gap: 15px
+    }
+
+    .countdown strong {
+        font-size: 20px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    *,
+    *:before,
+    *:after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important
+    }
+}
+
+
 
 .looking-forward {
     text-align: center;
