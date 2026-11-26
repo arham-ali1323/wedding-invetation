@@ -83,6 +83,17 @@ function showInvitation(data) {
 }
 
 async function loadInvitation() {
+  if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+    envelopeScreen.classList.remove("hidden");
+    openButton.hidden = true;
+    document.querySelector(".open-hint").textContent =
+      "GUESTS: PLEASE OPEN YOUR PERSONAL INVITATION LINK";
+    envelope.removeAttribute("role");
+    envelope.removeAttribute("tabindex");
+    envelope.setAttribute("aria-label", "Wedding invitation envelope");
+    return;
+  }
+
   const match = window.location.pathname.match(/^\/invite\/([a-f0-9]{64})\/?$/);
   if (!match) {
     showInvalidInvitation(
