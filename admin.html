@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4eadb">
-  <title>Guest Invitations | Wedding Admin</title>
+  <title>Guest Directory | Wedding Admin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,8 +15,8 @@
     <header class="admin-header">
       <a class="admin-back" href="/">← Wedding invitation</a>
       <p class="eyebrow">PRIVATE WEDDING CELEBRATION</p>
-      <h1>Guest invitations</h1>
-      <p>Create a private link for each guest, choose their events, and revoke access whenever you need.</p>
+      <h1>Guest directory</h1>
+      <p>Manage your guests, tailor each invitation, and keep track of your WhatsApp invites.</p>
     </header>
 
     <section class="admin-panel" id="loginPanel">
@@ -32,35 +32,88 @@
     <div class="admin-notice" id="adminNotice" role="status" aria-live="polite"></div>
 
     <div class="admin-dashboard hidden" id="adminDashboard">
+      <section class="guest-summary" aria-label="Guest summary">
+        <article class="summary-card"><span>Total Guests</span><strong id="totalGuests">0</strong><i>All celebrations</i></article>
+        <article class="summary-card"><span>Personal Guests</span><strong id="personalGuests">0</strong><i>Personally invited</i></article>
+        <article class="summary-card"><span>Special Guests</span><strong id="specialGuests">0</strong><i>All events</i></article>
+        <article class="summary-card"><span>Regular Relatives</span><strong id="relativeGuests">0</strong><i>Two events</i></article>
+        <article class="summary-card"><span>Invitations Sent</span><strong id="sentInvitations">0</strong><i>Marked as sent</i></article>
+        <article class="summary-card"><span>Invitations Pending</span><strong id="pendingInvitations">0</strong><i>Not yet sent</i></article>
+      </section>
+
       <section class="admin-panel">
         <div class="admin-panel-heading">
           <div>
-            <p class="eyebrow">PERSONALIZED ACCESS</p>
-            <h2>Add a guest or family</h2>
+            <p class="eyebrow">GUEST DETAILS</p>
+            <h2 id="guestFormTitle">Add a guest</h2>
           </div>
           <button class="quiet-button" id="logoutButton" type="button">Sign out</button>
         </div>
         <form id="guestForm">
-          <label for="guestName">Guest or family name</label>
-          <input id="guestName" name="name" maxlength="120" placeholder="e.g. The Ahmed Family" required>
+          <div class="guest-form-grid">
+            <div>
+              <label for="guestName">Full name</label>
+              <input id="guestName" name="name" maxlength="120" placeholder="e.g. Ayesha Ahmed" required>
+            </div>
+            <div>
+              <label for="guestPhone">Phone number <span class="field-help">Pakistan · +92</span></label>
+              <input id="guestPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+92 300 1234567" required>
+            </div>
+          </div>
+
+          <fieldset class="admin-events guest-category-field">
+            <legend>Guest list</legend>
+            <label class="event-choice personal-choice">
+              <input id="personalGuest" name="personal" type="checkbox">
+              <span>Keep in Personal Guests list</span>
+            </label>
+            <p class="field-help">Otherwise, guests invited to all events become Special Guests; guests invited to two events become Regular Relatives.</p>
+          </fieldset>
+
           <fieldset class="admin-events">
             <legend>Invited events <span>Choose one or more</span></legend>
             <div class="event-options" id="newGuestEvents"></div>
           </fieldset>
-          <label for="guestExpiry">Link expires (optional)</label>
+
+          <label for="guestNotes">Notes <span class="field-help">Optional</span></label>
+          <textarea id="guestNotes" name="notes" rows="3" maxlength="1000" placeholder="Dietary notes, family details, or a reminder"></textarea>
+
+          <label for="guestExpiry">Invitation link expires <span class="field-help">Optional</span></label>
           <input id="guestExpiry" name="expiresAt" type="datetime-local">
-          <button type="submit">Create invitation link</button>
+          <div class="guest-form-actions">
+            <button type="submit" id="saveGuestButton">Add guest</button>
+            <button class="quiet-button hidden" type="button" id="cancelEditButton">Cancel editing</button>
+          </div>
         </form>
         <div class="created-link hidden" id="createdLink"></div>
       </section>
 
       <section class="admin-panel guest-list-panel">
-        <div class="admin-panel-heading">
+        <div class="admin-panel-heading directory-heading">
           <div>
-            <p class="eyebrow">LINKS & PERMISSIONS</p>
-            <h2>Manage guests</h2>
+            <p class="eyebrow">SEND INVITATIONS</p>
+            <h2>Your guests</h2>
           </div>
           <button class="quiet-button" id="refreshButton" type="button">Refresh list</button>
+        </div>
+        <div class="guest-filters">
+          <label class="search-control" for="guestSearch">
+            <span>Search guests</span>
+            <input id="guestSearch" type="search" placeholder="Search name or phone">
+          </label>
+          <label for="categoryFilter">
+            <span>Guest category</span>
+            <select id="categoryFilter">
+              <option value="all">All categories</option>
+              <option value="personal">Personal Guests</option>
+              <option value="special">Special Guests</option>
+              <option value="relative">Regular Relatives</option>
+            </select>
+          </label>
+          <label for="eventFilter">
+            <span>Invited event</span>
+            <select id="eventFilter"><option value="all">All events</option></select>
+          </label>
         </div>
         <div class="guest-list" id="guestList"></div>
       </section>

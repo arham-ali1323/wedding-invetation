@@ -44,6 +44,14 @@ bearer tokens; only their hashes are stored. Share each generated link privately
 If you already created guests in the local SQLite database, add them again in
 the production admin page; local data is intentionally not uploaded.
 
+The admin guest directory classifies guests as Special (all configured events)
+or Regular Relatives (two events), unless you explicitly keep them in Personal
+Guests. Guest names and event assignments remain on the server so invitation
+permissions are enforced there. Phone numbers, notes, invitation-send status,
+and the generated link copy are stored in the admin browser's local storage;
+they are not synchronized to other devices. WhatsApp opens a prefilled message,
+and the host marks an invitation sent after confirming it in WhatsApp.
+
 ## Local database
 
 For local development, the Python server still uses `data/guests.sqlite3`:

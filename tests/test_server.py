@@ -135,6 +135,25 @@ class InvitationServerTests(unittest.TestCase):
         status, _payload, _headers = self.request(api_path)
         self.assertEqual(status, 404)
 
+    def test_guest_can_get_a_replacement_link_without_reusing_old_token(self):
+        self.sign_in()
+        _status, guest, _headers = self.create_guest("Guest", ["walima"])
+        old_api_path = guest["invitationPath"].replace("/invite/", "/api/invitations/")
+        status, replacement, _headers = self.request(
+            "/api/admin/guests/%s/link" % guest["id"],
+            method="POST",
+            payload={},
+            cookie=self.admin_cookie,
+        )
+        self.assertEqual(status, 200)
+        self.assertNotEqual(replacement["invitationPath"], guest["invitationPath"])
+        status, _payload, _headers = self.request(old_api_path)
+        self.assertEqual(status, 404)
+        new_api_path = replacement["invitationPath"].replace("/invite/", "/api/invitations/")
+        status, invitation, _headers = self.request(new_api_path)
+        self.assertEqual(status, 200)
+        self.assertEqual([event["id"] for event in invitation["events"]], ["walima"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -2139,3 +2139,146 @@ body {
 .events-for.hidden {
     display: none;
 }
+
+.guest-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.summary-card {
+    display: grid;
+    gap: 3px;
+    min-height: 114px;
+    padding: 17px 19px;
+    border: 1px solid #d5c19d;
+    background:
+        radial-gradient(circle at 100% 0, #ead9bd66, transparent 53%),
+        #fffaf1;
+    box-shadow: 0 8px 24px #65513a10;
+}
+
+.summary-card > span {
+    color: #806744;
+    font: 500 15px "Playfair Display", serif;
+}
+
+.summary-card strong {
+    color: #a95751;
+    font: 600 36px "Cormorant Garamond", serif;
+    line-height: 1;
+}
+
+.summary-card i {
+    color: #8c7c65;
+    font-size: 13px;
+    font-style: normal;
+}
+
+.guest-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.guest-form-grid > div { min-width: 0; }
+.guest-form-grid label { display: block; margin: 16px 0 6px; }
+.field-help { color: #95836b; font-size: 13px; font-weight: 400; }
+.guest-category-field { display: grid; justify-items: start; gap: 9px; }
+.guest-category-field .field-help { margin: 0; }
+.personal-choice { margin: 0; }
+
+.admin-panel textarea,
+.guest-filters input,
+.guest-filters select {
+    width: 100%;
+    min-height: 43px;
+    padding: 9px 11px;
+    border: 1px solid #cdbb9e;
+    border-radius: 2px;
+    background: #fffefa;
+    color: #463827;
+}
+
+.admin-panel textarea {
+    display: block;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.guest-form-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.admin-panel .guest-form-actions .quiet-button { min-height: 43px; padding: 9px 18px; }
+.guest-filters {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.5fr) repeat(2, minmax(150px, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.guest-filters label { display: grid; gap: 6px; color: #66513e; font-size: 14px; }
+.directory-guest-row { display: grid; gap: 13px; padding: 20px; border-radius: 3px; }
+.directory-guest-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+.directory-guest-identity { display: grid; gap: 2px; min-width: 0; }
+.directory-guest-row h3 { overflow-wrap: anywhere; font-size: 26px; }
+.guest-phone-link { width: fit-content; color: #806744; font-size: 14px; text-decoration: none; }
+.guest-phone-link:hover { color: #a95751; text-decoration: underline; }
+.guest-category-badge,
+.guest-event-badge,
+.guest-all-events {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 5px 9px;
+    border: 1px solid #d6c6a9;
+    border-radius: 99px;
+    background: #f9f2e6;
+    color: #70583c;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.guest-category-badge--special,
+.guest-all-events { border-color: #d3b86e; background: #faf2d9; color: #80621f; }
+.guest-category-badge--relative { border-color: #b7c8ae; background: #eff5ec; color: #456547; }
+.guest-category-badge--personal { border-color: #d8b8b2; background: #fbefec; color: #8d5149; }
+.guest-category-section { display: grid; gap: 10px; }
+.guest-category-section > h3 {
+    margin: 4px 0 0;
+    color: #76583a;
+    font: 600 23px "Cormorant Garamond", serif;
+}
+.guest-category-list { display: grid; gap: 12px; }
+.guest-event-badges { display: flex; flex-wrap: wrap; gap: 7px; }
+.guest-event-badge--mehndi { border-color: #b7c8ae; background: #eff5ec; color: #456547; }
+.guest-event-badge--barat { border-color: #d6b7a5; background: #f9eeea; color: #874b44; }
+.guest-event-badge--walima { border-color: #b9c9d5; background: #eef3f6; color: #536d83; }
+.guest-status-line { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.invitation-status { font: 500 13px "Playfair Display", serif; }
+.invitation-status--sent { color: #456547; }
+.invitation-status--pending { color: #9c6254; }
+.guest-notes { margin: 0; padding: 9px 12px; border-left: 2px solid #d5c19d; background: #fbf7ef; color: #756650; font-size: 14px; line-height: 1.5; white-space: pre-wrap; }
+.directory-guest-actions { margin-top: 0; }
+.admin-panel .whatsapp-button { border-color: #397c55; background: #397c55; }
+.admin-panel .whatsapp-button:hover { background: #2e6947; }
+.admin-panel .whatsapp-button:disabled { border-color: #b8b0a2; background: #e7e1d7; color: #8c8375; }
+.admin-panel .revoke-button:hover { background: #f8e9e5; color: #813b37; }
+
+@media (min-width: 1000px) {
+    .guest-summary { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+    .summary-card { min-height: 120px; padding: 14px; }
+    .summary-card > span { font-size: 13px; }
+    .summary-card strong { font-size: 32px; }
+}
+
+@media (max-width: 700px) {
+    .guest-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+    .summary-card { min-height: 105px; padding: 13px; }
+    .summary-card > span { font-size: 13px; }
+    .summary-card strong { font-size: 31px; }
+    .guest-form-grid { grid-template-columns: 1fr; gap: 0; }
+    .guest-filters { grid-template-columns: 1fr; gap: 10px; }
+    .directory-guest-top { align-items: flex-start; flex-direction: column; }
+    .directory-heading { align-items: center; }
+    .directory-guest-actions > button { flex: 1 1 42%; }
+}

@@ -305,6 +305,10 @@ class InvitationHandler(BaseHTTPRequestHandler):
             elif path == "/api/admin/guests":
                 self._admin_session()
                 self._create_guest()
+            elif re.fullmatch(r"/api/admin/guests/[0-9]+/link", path):
+                self._admin_session()
+                guest_id = int(path.split("/")[-2])
+                self._rotate_invitation_link(guest_id)
             else:
                 raise RequestError(404, "Page not found.")
         except RequestError as error:
@@ -410,6 +414,18 @@ class InvitationHandler(BaseHTTPRequestHandler):
                 "invitationPath": "/invite/" + token,
             },
         )
+
+    def _rotate_invitation_link(self, guest_id):
+        token = secrets.token_hex(32)
+        token_hash = hashlib.sha256(token.encode("ascii")).hexdigest()
+        with connect_db() as connection:
+            cursor = connection.execute(
+                "UPDATE guests SET token_hash = ?, updated_at = ? WHERE id = ?",
+                (token_hash, datetime.now(timezone.utc).isoformat(), guest_id),
+            )
+        if not cursor.rowcount:
+            raise RequestError(404, "Guest not found.")
+        self._send_json(200, {"invitationPath": "/invite/" + token})
 
     @staticmethod
     def _expired_cookie():

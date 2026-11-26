@@ -387,7 +387,9 @@ async function updateGuest(db, guestId, req, res) {
   const guest = validateGuest(await readJson(req));
   const assignments = guest.events.map((eventId) => db`
     INSERT INTO wedding_guest_events (guest_id, event_id)
-    VALUES (${guestId}, ${eventId})
+    SELECT id, ${eventId}
+    FROM wedding_guests
+    WHERE id = ${guestId}
   `);
   const [updated] = await db.transaction([
     db`
@@ -401,6 +403,19 @@ async function updateGuest(db, guestId, req, res) {
   ]);
   if (!updated.length) return json(res, 404, { error: "Guest not found." });
   return json(res, 200, { ok: true });
+}
+
+async function rotateInvitationLink(db, guestId, res) {
+  const token = crypto.randomBytes(32).toString("hex");
+  const tokenHash = crypto.createHash("sha256").update(token).digest("hex");
+  const updated = await db`
+    UPDATE wedding_guests
+    SET token_hash = ${tokenHash}, updated_at = NOW()
+    WHERE id = ${guestId}
+    RETURNING id
+  `;
+  if (!updated.length) return json(res, 404, { error: "Guest not found." });
+  return json(res, 200, { invitationPath: `/invite/${token}` });
 }
 
 async function handle(req, res) {
@@ -452,6 +467,13 @@ async function handle(req, res) {
     `;
     if (!deleted.length) return json(res, 404, { error: "Guest not found." });
     return json(res, 200, { ok: true });
+  }
+
+  const linkMatch = path.match(/^\/admin\/guests\/([0-9]+)\/link$/);
+  if (linkMatch && method === "POST") {
+    checkOrigin(req);
+    await requireAdmin(req, db);
+    return rotateInvitationLink(db, linkMatch[1], res);
   }
 
   return json(res, 404, { error: "Page not found." });
